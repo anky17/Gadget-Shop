@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "667612136293",
+    "project_id": "gadgetshop-77a69",
+    "storage_bucket": "gadgetshop-77a69.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:667612136293:android:f63f719a5ac5c17c12d78c",
+        "android_client_info": {
+          "package_name": "com.example.gadgetshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8EZTn8DxPeIXGVd8TNvMBkiroS1jg-38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
