@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gadgetshop/screens/user/all_categories_screen.dart';
+import 'package:gadgetshop/screens/user/all_flash_sale_screen.dart';
+import 'package:gadgetshop/screens/user/all_products_screen.dart';
+import 'package:gadgetshop/widgets/all_products_widget.dart';
 import 'package:gadgetshop/widgets/carousel_widget.dart';
 import 'package:gadgetshop/widgets/category_slider_widget.dart';
-import 'package:gadgetshop/widgets/customer_drawer_widget.dart';
-import 'package:gadgetshop/widgets/flash_sale_widget.dart';
+import 'package:gadgetshop/widgets/drawer_widget.dart';
+import 'package:gadgetshop/widgets/flash_sale_slider_widget.dart';
 import 'package:gadgetshop/widgets/heading_widget.dart';
 import 'package:get/get.dart';
 import '../../utils/app_constant.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,16 +48,23 @@ class _MainScreenState extends State<MainScreen> {
               headingTitle: 'Categories',
               headingSubtitle: 'According to your budget',
               buttonText: 'See more ->',
-              onTap: () {},
+              onTap: () => Get.to(() => AllCategoriesScreen()),
             ),
             CategorySliderWidget(),
             HeadingWidget(
               headingTitle: 'Flash Sale',
               headingSubtitle: 'According to your budget',
               buttonText: 'See more ->',
-              onTap: () {},
+              onTap: () => Get.to(() => AllFlashSaleScreen()),
             ),
             FlashSaleWidget(),
+            HeadingWidget(
+              headingTitle: 'All Products',
+              headingSubtitle: 'According to your budget',
+              buttonText: 'See more ->',
+              onTap: () => Get.to(() => AllProductsScreen()),
+            ),
+            AllProductsWidget(),
           ],
         ),
       ),

@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gadgetshop/screens/user/all_products_screen.dart';
+import 'package:gadgetshop/screens/user/home_screen.dart';
 import 'package:gadgetshop/screens/user/welcome_screen.dart';
 import 'package:gadgetshop/utils/app_constant.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -60,6 +62,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  Get.to(() => HomeScreen());
+                },
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text(
                   "Home",
@@ -78,6 +84,10 @@ class _DrawerWidgetState extends State<DrawerWidget> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: ListTile(
+                onTap: () {
+                  Navigator.pop(context);
+                  Get.to(() => AllProductsScreen());
+                },
                 titleAlignment: ListTileTitleAlignment.center,
                 title: Text(
                   "Products",

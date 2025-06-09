@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> loggedIn(BuildContext context) async {
     if (user != null) {
-      Get.offAll(() => MainScreen());
+      Get.offAll(() => HomeScreen());
     } else {
       Get.offAll(() => WelcomeScreen());
     }

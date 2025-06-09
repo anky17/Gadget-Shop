@@ -109,7 +109,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         showCustomSnackbar(
                             title: "Success", message: "Login Successful");
 
-                        Get.offAll(() => MainScreen());
+                        Get.offAll(() => HomeScreen());
                       } else {
                         showCustomSnackbar(
                             title: "Error",
