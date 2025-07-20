@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:gadgetshop/controllers/get_device_token_controller.dart';
 import 'package:gadgetshop/models/user_model.dart';
-import 'package:gadgetshop/screens/user/home_screen.dart';
+import 'package:gadgetshop/views/user/home_screen.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 

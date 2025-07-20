@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gadgetshop/screens/user/all_categories_screen.dart';
-import 'package:gadgetshop/screens/user/all_flash_sale_screen.dart';
-import 'package:gadgetshop/screens/user/all_products_screen.dart';
+import 'package:gadgetshop/views/user/all_categories_screen.dart';
+import 'package:gadgetshop/views/user/all_flash_sale_screen.dart';
+import 'package:gadgetshop/views/user/all_products_screen.dart';
+import 'package:gadgetshop/views/user/cart_screen.dart';
 import 'package:gadgetshop/widgets/all_products_widget.dart';
 import 'package:gadgetshop/widgets/carousel_widget.dart';
 import 'package:gadgetshop/widgets/category_slider_widget.dart';
@@ -36,6 +37,12 @@ class _HomeScreenState extends State<HomeScreen> {
               fontWeight: FontWeight.bold, color: AppConstant.appTextColor),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () => Get.to(() => CartScreen()),
+            icon: Icon(Icons.shopping_cart_checkout),
+          )
+        ],
       ),
       drawer: DrawerWidget(),
       body: SingleChildScrollView(

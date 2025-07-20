@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gadgetshop/screens/user/all_products_screen.dart';
-import 'package:gadgetshop/screens/user/home_screen.dart';
-import 'package:gadgetshop/screens/user/welcome_screen.dart';
+import 'package:gadgetshop/views/user/all_products_screen.dart';
+import 'package:gadgetshop/views/user/home_screen.dart';
+import 'package:gadgetshop/views/auth/welcome_screen.dart';
 import 'package:gadgetshop/utils/app_constant.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';

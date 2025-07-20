@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gadgetshop/models/category_model.dart';
-import 'package:gadgetshop/screens/user/single_category_product_screen.dart';
+import 'package:gadgetshop/views/user/single_category_product_screen.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 

@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:gadgetshop/controllers/sign_up_controller.dart';
-import 'package:gadgetshop/screens/auth/sign_in_screen.dart';
+import 'package:gadgetshop/views/auth/sign_in_screen.dart';
 import 'package:gadgetshop/utils/app_constant.dart';
 import 'package:gadgetshop/utils/snackbar_utils.dart';
 import 'package:gadgetshop/widgets/auth_button_widget.dart';

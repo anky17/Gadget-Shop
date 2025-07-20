@@ -2,33 +2,39 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gadgetshop/models/category_model.dart';
-import 'package:gadgetshop/screens/user/single_category_product_screen.dart';
+import 'package:gadgetshop/models/products_model.dart';
+import 'package:gadgetshop/views/user/products_detail_screen.dart';
 import 'package:gadgetshop/utils/app_constant.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 
-class AllCategoriesScreen extends StatefulWidget {
-  const AllCategoriesScreen({super.key});
+class SingleCategoryProductScreen extends StatefulWidget {
+  final String categoryId;
+  const SingleCategoryProductScreen({super.key, required this.categoryId});
 
   @override
-  State<AllCategoriesScreen> createState() => _AllCategoriesScreenState();
+  State<SingleCategoryProductScreen> createState() =>
+      _SingleCategoryProductScreenState();
 }
 
-class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
+class _SingleCategoryProductScreenState
+    extends State<SingleCategoryProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: AppConstant.appTextColor),
         title: Text(
-          "All Categories",
+          "Products",
           style: TextStyle(color: AppConstant.appTextColor),
         ),
         backgroundColor: AppConstant.appMainColor,
       ),
       body: FutureBuilder(
-        future: FirebaseFirestore.instance.collection("categories").get(),
+        future: FirebaseFirestore.instance
+            .collection("products")
+            .where("categoryId", isEqualTo: widget.categoryId)
+            .get(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return Center(
@@ -62,21 +68,26 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
               shrinkWrap: true,
               physics: BouncingScrollPhysics(),
               itemBuilder: (context, index) {
-                var doc = snapshot.data!.docs[index];
-                CategoryModel categoriesModel = CategoryModel(
-                  categoryId: doc['categoryId'],
-                  categoryName: doc['categoryName'],
-                  categoryImg: doc['categoryImg'],
-                  createdAt: doc['createdAt'],
-                  updatedAt: doc['updatedAt'],
+                final productData = snapshot.data!.docs[index];
+                ProductModel productsModel = ProductModel(
+                  productId: productData['productId'],
+                  categoryId: productData["categoryId"],
+                  productName: productData["productName"],
+                  categoryName: productData["categoryName"],
+                  salePrice: productData["salePrice"],
+                  fullPrice: productData["fullPrice"],
+                  productImages: productData["productImages"],
+                  deliveryTime: productData["deliveryTime"],
+                  isSale: productData["isSale"],
+                  productDescription: productData["productDescription"],
+                  createdAt: productData["createdAt"],
+                  updatedAt: productData["updatedAt"],
                 );
                 return Row(
                   children: [
                     GestureDetector(
-                      onTap: () => Get.to(
-                        () => SingleCategoryProductScreen(
-                            categoryId: categoriesModel.categoryId),
-                      ),
+                      onTap: () => Get.to(() =>
+                          ProductsDetailScreen(productModel: productsModel)),
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: FillImageCard(
@@ -84,9 +95,11 @@ class _AllCategoriesScreenState extends State<AllCategoriesScreen> {
                           width: Get.width / 2.3,
                           heightImage: Get.height / 10,
                           imageProvider: CachedNetworkImageProvider(
-                              categoriesModel.categoryImg),
-                          title:
-                              Center(child: Text(categoriesModel.categoryName)),
+                            productsModel.productImages[0],
+                          ),
+                          title: Center(
+                            child: Text(productsModel.productName),
+                          ),
                         ),
                       ),
                     )

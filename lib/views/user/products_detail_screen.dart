@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gadgetshop/models/products_model.dart';
 import 'package:gadgetshop/utils/app_constant.dart';
+import 'package:gadgetshop/views/user/cart_screen.dart';
 import 'package:get/get.dart';
 
 class ProductsDetailScreen extends StatefulWidget {
@@ -25,6 +26,12 @@ class _ProductsDetailScreenState extends State<ProductsDetailScreen> {
           "Product Details",
           style: TextStyle(color: AppConstant.appTextColor),
         ),
+        actions: [
+          IconButton(
+            onPressed: () => Get.to(() => CartScreen()),
+            icon: Icon(Icons.shopping_cart_checkout),
+          )
+        ],
       ),
       body: Container(
         margin: EdgeInsets.only(top: 10),

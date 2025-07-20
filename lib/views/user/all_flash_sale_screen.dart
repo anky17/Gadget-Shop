@@ -3,29 +3,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gadgetshop/models/products_model.dart';
-import 'package:gadgetshop/screens/user/products_detail_screen.dart';
+import 'package:gadgetshop/views/user/products_detail_screen.dart';
 import 'package:gadgetshop/utils/app_constant.dart';
 import 'package:get/get.dart';
 import 'package:image_card/image_card.dart';
 
-class SingleCategoryProductScreen extends StatefulWidget {
-  final String categoryId;
-  const SingleCategoryProductScreen({super.key, required this.categoryId});
+class AllFlashSaleScreen extends StatefulWidget {
+  const AllFlashSaleScreen({super.key});
 
   @override
-  State<SingleCategoryProductScreen> createState() =>
-      _SingleCategoryProductScreenState();
+  State<AllFlashSaleScreen> createState() => _AllFlashSaleScreenState();
 }
 
-class _SingleCategoryProductScreenState
-    extends State<SingleCategoryProductScreen> {
+class _AllFlashSaleScreenState extends State<AllFlashSaleScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: AppConstant.appTextColor),
         title: Text(
-          "Products",
+          "All Flash Sale Products",
           style: TextStyle(color: AppConstant.appTextColor),
         ),
         backgroundColor: AppConstant.appMainColor,
@@ -33,7 +30,7 @@ class _SingleCategoryProductScreenState
       body: FutureBuilder(
         future: FirebaseFirestore.instance
             .collection("products")
-            .where("categoryId", isEqualTo: widget.categoryId)
+            .where('isSale', isEqualTo: true)
             .get(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
@@ -95,11 +92,8 @@ class _SingleCategoryProductScreenState
                           width: Get.width / 2.3,
                           heightImage: Get.height / 10,
                           imageProvider: CachedNetworkImageProvider(
-                            productsModel.productImages[0],
-                          ),
-                          title: Center(
-                            child: Text(productsModel.productName),
-                          ),
+                              productsModel.productImages[0]),
+                          title: Center(child: Text(productsModel.productName)),
                         ),
                       ),
                     )

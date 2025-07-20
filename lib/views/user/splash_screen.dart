@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:gadgetshop/screens/user/home_screen.dart';
-import 'package:gadgetshop/screens/user/welcome_screen.dart';
+import 'package:gadgetshop/views/user/home_screen.dart';
+import 'package:gadgetshop/views/auth/welcome_screen.dart';
 import 'package:gadgetshop/utils/app_constant.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 2), () {
       loggedIn(context);
     });
   }
