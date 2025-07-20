@@ -1,9 +1,5 @@
 # 🛍️ Gadgetshop
 
-![Flutter](https://img.shields.io/badge/Flutter-3.6.0+-blue.svg)
-![Firebase](https://img.shields.io/badge/Firebase-Enabled-orange.svg)
-![Version](https://img.shields.io/badge/Version-1.0.0+1-green.svg)
-
 A modern cross-platform e-commerce application built with Flutter for desktop environments, featuring a clean UI, seamless authentication, and responsive design.
 
 ## 📱 Features
@@ -27,12 +23,6 @@ A modern cross-platform e-commerce application built with Flutter for desktop en
 - 🛒 Product browsing and detailed product views
 - 🔍 Search functionality
 - 👤 User profile management
-
-### Performance
-
-- 🚀 Optimized for desktop environments
-- 🖥️ Responsive layouts for different screen sizes
-- 📦 Efficient state management with GetX
 
 ## 🛠️ Prerequisites
 
@@ -129,60 +119,3 @@ flutterfire configure --project=your-firebase-project-id
    - `ios/Runner/GoogleService-Info.plist`
    - `macos/Runner/GoogleService-Info.plist`
    - `lib/firebase_options.dart`
-
-### 4. Run the application
-
-```bash
-# For macOS
-flutter run -d macos
-
-# For Windows
-flutter run -d windows
-
-# For Linux
-flutter run -d linux
-```
-
-### Key Application Flow
-
-1. **Splash Screen**: Initial loading screen with animation
-2. **Authentication Check**:
-   - If authenticated → Home Screen
-   - If not authenticated → Welcome Screen
-3. **Welcome Screen**: Option to sign in with Google or Email
-4. **Main Screen (Home)**: Central navigation hub with product categories, promotions, and flash sales
-
-## 🎨 Assets
-
-### Animations
-
-- Splash screen animation: Located in `assets/animations/`
-- Loading indicators: Implemented with Flutter EasyLoading
-
-### Images
-
-- Product images: Loaded dynamically from the backend
-- Banner images: Used in the carousel slider
-- Category icons: Used in the category slider
-
-## ⭐ Show Your Support
-
-If you find this project useful, please consider giving it a star on GitHub! Your support helps to make the project more visible and encourages continued development.
-
-```
-⭐ Star this repository on GitHub — it helps!
-```
-
-## 👍 Like and Follow
-
-Stay updated with our latest developments and projects:
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
