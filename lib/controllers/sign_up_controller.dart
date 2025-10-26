@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:gadgetshop/models/user_model.dart';
-import 'package:gadgetshop/utils/snackbar_utils.dart';
+import 'package:gadgetshop/core/utils/snackbar_utils.dart';
 import 'package:get/get.dart';
 
 class SignUpController extends GetxController {

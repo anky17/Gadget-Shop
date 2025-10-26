@@ -52,13 +52,13 @@ class GoogleSignInController extends GetxController {
               .collection('users')
               .doc(user.uid)
               .set(userModel.toMap());
-          EasyLoading.dismiss();
           Get.offAll(() => const HomeScreen());
         }
       }
     } catch (e) {
+      print("error $e");
+    } finally {
       EasyLoading.dismiss();
-      throw ("error $e");
     }
   }
 }

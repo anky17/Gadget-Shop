@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:gadgetshop/views/auth/sign_in_screen.dart';
-import 'package:gadgetshop/utils/snackbar_utils.dart';
+import 'package:gadgetshop/core/utils/snackbar_utils.dart';
 import 'package:get/get.dart';
 
 class ForgotPasswordController extends GetxController {

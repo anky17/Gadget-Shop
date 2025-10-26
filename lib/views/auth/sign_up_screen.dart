@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:gadgetshop/controllers/sign_up_controller.dart';
 import 'package:gadgetshop/views/auth/sign_in_screen.dart';
-import 'package:gadgetshop/utils/app_constant.dart';
-import 'package:gadgetshop/utils/snackbar_utils.dart';
-import 'package:gadgetshop/widgets/auth_button_widget.dart';
-import 'package:gadgetshop/widgets/text_field_widget.dart';
+import 'package:gadgetshop/core/utils/app_constant.dart';
+import 'package:gadgetshop/core/utils/snackbar_utils.dart';
+import 'package:gadgetshop/widgets/auth/auth_button_widget.dart';
+import 'package:gadgetshop/widgets/auth/text_field_widget.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatefulWidget {

@@ -12,7 +12,20 @@
           "package_name": "com.example.gadgetshop"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "667612136293-vk4dul9c69a2l7bt3bq3scjk1ig2oc6g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gadgetshop",
+            "certificate_hash": "77e1d8b13deb172ac7df409c55847492b61db263"
+          }
+        },
+        {
+          "client_id": "667612136293-f6mtdhdn6kpmav4b3hvm14ankiukj4la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyA8EZTn8DxPeIXGVd8TNvMBkiroS1jg-38"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "667612136293-f6mtdhdn6kpmav4b3hvm14ankiukj4la.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "667612136293-3cu3fqtms6hns9r78gvv87ik6d7593a7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gadgetshop"
+              }
+            }
+          ]
         }
       }
     }

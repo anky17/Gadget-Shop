@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gadgetshop/controllers/google_sign_in_controller.dart';
 import 'package:gadgetshop/views/auth/sign_in_screen.dart';
-import 'package:gadgetshop/utils/app_constant.dart';
+import 'package:gadgetshop/core/utils/app_constant.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 

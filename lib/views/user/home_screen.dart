@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gadgetshop/views/user/all_categories_screen.dart';
-import 'package:gadgetshop/views/user/all_flash_sale_screen.dart';
-import 'package:gadgetshop/views/user/all_products_screen.dart';
-import 'package:gadgetshop/views/user/cart_screen.dart';
-import 'package:gadgetshop/widgets/all_products_widget.dart';
-import 'package:gadgetshop/widgets/carousel_widget.dart';
-import 'package:gadgetshop/widgets/category_slider_widget.dart';
-import 'package:gadgetshop/widgets/drawer_widget.dart';
-import 'package:gadgetshop/widgets/flash_sale_slider_widget.dart';
-import 'package:gadgetshop/widgets/heading_widget.dart';
+import 'package:gadgetshop/views/user/cart/cart_screen.dart';
+import 'package:gadgetshop/views/user/flashsale/all_flash_sale_screen.dart';
+import 'package:gadgetshop/views/user/categories/all_categories_screen.dart';
+import 'package:gadgetshop/views/user/products/all_products_screen.dart';
+import 'package:gadgetshop/widgets/products/all_products_widget.dart';
+import 'package:gadgetshop/widgets/common/carousel_widget.dart';
+import 'package:gadgetshop/widgets/category/category_slider_widget.dart';
+import 'package:gadgetshop/widgets/common/drawer_widget.dart';
+import 'package:gadgetshop/widgets/flashsale/flash_sale_slider_widget.dart';
+import 'package:gadgetshop/widgets/common/heading_widget.dart';
 import 'package:get/get.dart';
-import '../../utils/app_constant.dart';
+import '../../core/utils/app_constant.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

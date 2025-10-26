@@ -5,10 +5,10 @@ import 'package:gadgetshop/controllers/sign_in_controller.dart';
 import 'package:gadgetshop/views/auth/forgot_password_screen.dart';
 import 'package:gadgetshop/views/auth/sign_up_screen.dart';
 import 'package:gadgetshop/views/user/home_screen.dart';
-import 'package:gadgetshop/utils/app_constant.dart';
-import 'package:gadgetshop/utils/snackbar_utils.dart';
-import 'package:gadgetshop/widgets/auth_button_widget.dart';
-import 'package:gadgetshop/widgets/text_field_widget.dart';
+import 'package:gadgetshop/core/utils/app_constant.dart';
+import 'package:gadgetshop/core/utils/snackbar_utils.dart';
+import 'package:gadgetshop/widgets/auth/auth_button_widget.dart';
+import 'package:gadgetshop/widgets/auth/text_field_widget.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:gadgetshop/views/user/home_screen.dart';
 import 'package:gadgetshop/views/auth/welcome_screen.dart';
-import 'package:gadgetshop/utils/app_constant.dart';
+import 'package:gadgetshop/core/utils/app_constant.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset('assets/icons/splash-icon.json'), // No SizedBox
+            Lottie.asset('assets/icons/splash-icon.json'),
             const Text(
               'Gadget Shop',
               style: TextStyle(
