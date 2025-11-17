@@ -2,6 +2,14 @@
 
 A modern cross-platform e-commerce application built with Flutter for desktop environments, featuring a clean UI, seamless authentication, and responsive design.
 
+## Download APK
+
+### Test the app on Android
+
+<a href="https://raw.githubusercontent.com/anky17/Gadget-Shop/main/app-release.apk">
+  <img src="https://www.coinagemag.com/wp-content/uploads/2017/12/free-download-png-blue-color-free-download-button-679-1.png" align="center" alt="download-icon" width="200" />
+</a>
+
 ## Features
 
 ### Authentication
