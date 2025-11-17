@@ -4,6 +4,7 @@ import 'package:gadgetshop/views/user/cart/cart_screen.dart';
 import 'package:gadgetshop/views/user/flashsale/all_flash_sale_screen.dart';
 import 'package:gadgetshop/views/user/categories/all_categories_screen.dart';
 import 'package:gadgetshop/views/user/products/all_products_screen.dart';
+import 'package:gadgetshop/views/user/search/search_screen.dart';
 import 'package:gadgetshop/widgets/products/all_products_widget.dart';
 import 'package:gadgetshop/widgets/common/carousel_widget.dart';
 import 'package:gadgetshop/widgets/category/category_slider_widget.dart';
@@ -38,6 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: true,
         actions: [
+          IconButton(
+            onPressed: () => Get.to(() => const SearchScreen()),
+            icon: const Icon(Icons.search),
+          ),
           IconButton(
             onPressed: () => Get.to(() => CartScreen()),
             icon: Icon(Icons.shopping_cart_checkout),
