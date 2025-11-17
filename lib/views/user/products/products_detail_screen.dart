@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gadgetshop/controllers/cart_controller.dart';
 import 'package:gadgetshop/models/products_model.dart';
 import 'package:gadgetshop/core/utils/app_constant.dart';
 import 'package:gadgetshop/views/user/cart/cart_screen.dart';
@@ -16,6 +17,8 @@ class ProductsDetailScreen extends StatefulWidget {
 }
 
 class _ProductsDetailScreenState extends State<ProductsDetailScreen> {
+  final CartController cartController = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -151,7 +154,10 @@ class _ProductsDetailScreenState extends State<ProductsDetailScreen> {
                           // SizedBox(width: 10),
                           Expanded(
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                await cartController
+                                    .addToCart(widget.productModel);
+                              },
                               style: ElevatedButton.styleFrom(
                                 foregroundColor: AppConstant.appSecondaryColor,
                                 shape: RoundedRectangleBorder(

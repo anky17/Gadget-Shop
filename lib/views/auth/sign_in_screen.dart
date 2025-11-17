@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:gadgetshop/controllers/sign_in_controller.dart';
+import 'package:gadgetshop/models/user_model.dart';
+import 'package:gadgetshop/views/admin/admin_dashboard_screen.dart';
 import 'package:gadgetshop/views/auth/forgot_password_screen.dart';
 import 'package:gadgetshop/views/auth/sign_up_screen.dart';
 import 'package:gadgetshop/views/user/home_screen.dart';
@@ -39,115 +42,137 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             backgroundColor: AppConstant.appSecondaryColor,
           ),
-          body: Column(
-            children: [
-              isKeyboardVisible
-                  ? Text(
-                      "Welcome to Gadget Shop",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                isKeyboardVisible
+                    ? Text(
+                        "Welcome to Gadget Shop",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      )
+                    : Column(
+                        children: [
+                          Lottie.asset("assets/icons/splash-icon.json"),
+                        ],
                       ),
-                    )
-                  : Column(
-                      children: [
-                        Lottie.asset("assets/icons/splash-icon.json"),
-                      ],
-                    ),
-              TextFieldWidget(
-                controller: emailController,
-                hintText: 'Enter your email',
-                prefixIcon: Icons.email,
-                keyboardType: TextInputType.emailAddress,
-              ),
-              Obx(
-                () => TextFieldWidget(
-                  controller: passwordController,
-                  hintText: 'Enter your password',
-                  prefixIcon: Icons.lock,
-                  obscureText: signInController.isPasswordVisible.value,
-                  suffix: GestureDetector(
-                      onTap: () {
-                        signInController.isPasswordVisible.toggle();
-                      },
-                      child: signInController.isPasswordVisible.value
-                          ? Icon(Icons.visibility_off)
-                          : Icon(Icons.visibility)),
+                TextFieldWidget(
+                  controller: emailController,
+                  hintText: 'Enter your email',
+                  prefixIcon: Icons.email,
+                  keyboardType: TextInputType.emailAddress,
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
-                alignment: Alignment.centerRight,
-                child: GestureDetector(
-                  onTap: () {
-                    Get.to(() => ForgotPasswordScreen());
-                  },
-                  child: Text(
-                    "Forgot Password",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppConstant.appSecondaryColor,
-                    ),
+                Obx(
+                  () => TextFieldWidget(
+                    controller: passwordController,
+                    hintText: 'Enter your password',
+                    prefixIcon: Icons.lock,
+                    obscureText: signInController.isPasswordVisible.value,
+                    suffix: GestureDetector(
+                        onTap: () {
+                          signInController.isPasswordVisible.toggle();
+                        },
+                        child: signInController.isPasswordVisible.value
+                            ? Icon(Icons.visibility_off)
+                            : Icon(Icons.visibility)),
                   ),
                 ),
-              ),
-              AuthButtonWidget(
-                text: 'SIGN IN',
-                onPressed: () async {
-                  String email = emailController.text.trim();
-                  String password = passwordController.text.trim();
-
-                  if (email.isEmpty || password.isEmpty) {
-                    showCustomSnackbar(
-                        title: "Error",
-                        message: "Please enter the valid details");
-                  } else {
-                    UserCredential? userCredential =
-                        await signInController.signInMethod(email, password);
-                    if (userCredential != null) {
-                      if (userCredential.user!.emailVerified) {
-                        showCustomSnackbar(
-                            title: "Success", message: "Login Successful");
-
-                        Get.offAll(() => HomeScreen());
-                      } else {
-                        showCustomSnackbar(
-                            title: "Error",
-                            message: "Please verify your email before login!");
-                      }
-                    } else {
-                      showCustomSnackbar(
-                          title: "Error", message: "Please try again!");
-                    }
-                  }
-                },
-              ),
-              SizedBox(height: Get.width / 15),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account? ",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                  GestureDetector(
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  alignment: Alignment.centerRight,
+                  child: GestureDetector(
                     onTap: () {
-                      Get.offAll(() => SignUpScreen());
+                      Get.to(() => ForgotPasswordScreen());
                     },
                     child: Text(
-                      'Sign Up',
+                      "Forgot Password",
                       style: TextStyle(
-                        color: Colors.blue[900],
+                        fontWeight: FontWeight.bold,
+                        color: AppConstant.appSecondaryColor,
+                      ),
+                    ),
+                  ),
+                ),
+                AuthButtonWidget(
+                  text: 'SIGN IN',
+                  onPressed: () async {
+                    String email = emailController.text.trim();
+                    String password = passwordController.text.trim();
+
+                    if (email.isEmpty || password.isEmpty) {
+                      showCustomSnackbar(
+                          title: "Error",
+                          message: "Please enter the valid details");
+                    } else {
+                      UserCredential? userCredential =
+                          await signInController.signInMethod(email, password);
+                      if (userCredential != null) {
+                        if (userCredential.user!.emailVerified) {
+                          // Check if user is admin
+                          DocumentSnapshot userDoc = await FirebaseFirestore
+                              .instance
+                              .collection('users')
+                              .doc(userCredential.user!.uid)
+                              .get();
+
+                          if (userDoc.exists) {
+                            UserModel userModel = UserModel.fromMap(
+                                userDoc.data() as Map<String, dynamic>);
+
+                            showCustomSnackbar(
+                                title: "Success", message: "Login Successful");
+
+                            // Redirect based on admin status
+                            if (userModel.isAdmin) {
+                              Get.offAll(() => AdminDashboardScreen());
+                            } else {
+                              Get.offAll(() => const HomeScreen());
+                            }
+                          } else {
+                            Get.offAll(() => const HomeScreen());
+                          }
+                        } else {
+                          showCustomSnackbar(
+                              title: "Error",
+                              message:
+                                  "Please verify your email before login!");
+                        }
+                      } else {
+                        showCustomSnackbar(
+                            title: "Error", message: "Please try again!");
+                      }
+                    }
+                  },
+                ),
+                SizedBox(height: Get.width / 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account? ",
+                      style: TextStyle(
+                        color: Colors.black,
                         fontSize: 16,
                       ),
                     ),
-                  )
-                ],
-              ),
-            ],
+                    GestureDetector(
+                      onTap: () {
+                        Get.offAll(() => SignUpScreen());
+                      },
+                      child: Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          color: Colors.blue[900],
+                          fontSize: 16,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
